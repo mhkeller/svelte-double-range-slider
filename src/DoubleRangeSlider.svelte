@@ -167,6 +167,7 @@
 	} */
 	.handle:active:after {
 		background-color: #ddd;
+		z-index: 9;
 	}
 	.body {
 		top: 0;
