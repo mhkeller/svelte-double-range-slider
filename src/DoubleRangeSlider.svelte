@@ -1,8 +1,8 @@
 <script>
 	import { clamp } from 'yootils';
 
-	let start = 0;
-	let end = 1;
+	export let start = 0;
+	export let end = 1;
 
 	let leftHandle;
 

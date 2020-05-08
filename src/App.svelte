@@ -1,11 +1,21 @@
 <script>
 	import DoubleRangeSlider from './DoubleRangeSlider.svelte';
-	export let name;
+	let start;
+	let end;
+
+	const nice = d => {
+		if (!d && d !== 0) return '';
+		return d.toFixed(2);
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<DoubleRangeSlider/>
+	<h1>Hello World!</h1>
+	<DoubleRangeSlider bind:start bind:end/>
+	<div class="labels">
+		<div class="label">{nice(start)}</div>
+		<div class="label">{nice(end)}</div>
+	</div>
 </main>
 
 
@@ -24,4 +34,11 @@
 		font-weight: 100;
 	}
 
+	.label:first-child {
+		float: left;
+	}
+
+	.label:last-child {
+		float: right;
+	}
 </style>
