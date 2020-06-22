@@ -28,7 +28,3 @@ See the [demo's source](https://github.com/mhkeller/svelte-double-range-slider/b
 npm install
 npm run dev
 ```
-
-## TODO
-
-- [ ]  Would be nice if you could define a step
