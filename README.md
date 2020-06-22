@@ -12,7 +12,7 @@ Svelte Double Range Slider
 
 ```html
 <script>
-  import DoubleRangeSlider from './DoubleRangeSlider.svelte';
+  import DoubleRangeSlider from './path/to/DoubleRangeSlider.svelte';
   let start;
   let end;
 </script>
