@@ -14,6 +14,9 @@
 		let y;
 
 		function handleMousedown(event) {
+			if (event.type === 'touchstart') {
+				event = event.touches[0];
+			}
 			x = event.clientX;
 			y = event.clientY;
 
@@ -23,11 +26,19 @@
 
 			window.addEventListener('mousemove', handleMousemove);
 			window.addEventListener('mouseup', handleMouseup);
+
+			window.addEventListener('touchmove', handleMousemove);
+			window.addEventListener('touchend', handleMouseup);
 		}
 
 		function handleMousemove(event) {
+			if (event.type === 'touchmove') {
+				event = event.changedTouches[0];
+			}
+
 			const dx = event.clientX - x;
 			const dy = event.clientY - y;
+
 			x = event.clientX;
 			y = event.clientY;
 
@@ -46,12 +57,17 @@
 
 			window.removeEventListener('mousemove', handleMousemove);
 			window.removeEventListener('mouseup', handleMouseup);
+
+			window.removeEventListener('touchmove', handleMousemove);
+			window.removeEventListener('touchend', handleMouseup);
 		}
 
 		node.addEventListener('mousedown', handleMousedown);
+		node.addEventListener('touchstart', handleMousedown);
 
 		return {
 			destroy() {
+				node.removeEventListener('touchmove', handleMousedown);
 				node.removeEventListener('mousedown', handleMousedown);
 			}
 		};
@@ -110,7 +126,7 @@
 			bind:this={leftHandle}
 			data-which="start"
 			use:draggable
-			on:dragmove="{setHandlePosition('start')}"
+			on:dragmove|stopPropagation="{setHandlePosition('start')}"
 			style="
 				left: {100 * start}%
 			"
@@ -119,7 +135,7 @@
 			class="handle"
 			data-which="end"
 			use:draggable
-			on:dragmove="{setHandlePosition('end')}"
+			on:dragmove|stopPropagation="{setHandlePosition('end')}"
 			style="
 				left: {100 * end}%
 			"
