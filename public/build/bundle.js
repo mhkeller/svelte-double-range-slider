@@ -50,6 +50,13 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
+    function prevent_default(fn) {
+        return function (event) {
+            event.preventDefault();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
     function stop_propagation(fn) {
         return function (event) {
             event.stopPropagation();
@@ -396,11 +403,11 @@ var app = (function () {
     			attr_dev(div1, "class", "handle svelte-1507pyp");
     			attr_dev(div1, "data-which", "start");
     			set_style(div1, "left", 100 * /*start*/ ctx[0] + "%\n\t\t\t");
-    			add_location(div1, file, 123, 2, 2811);
+    			add_location(div1, file, 123, 2, 2842);
     			attr_dev(div2, "class", "handle svelte-1507pyp");
     			attr_dev(div2, "data-which", "end");
     			set_style(div2, "left", 100 * /*end*/ ctx[1] + "%\n\t\t\t");
-    			add_location(div2, file, 133, 2, 3014);
+    			add_location(div2, file, 133, 2, 3060);
     			attr_dev(div3, "class", "slider svelte-1507pyp");
     			add_location(div3, file, 112, 1, 2587);
     			attr_dev(div4, "class", "double-range-container svelte-1507pyp");
@@ -424,11 +431,11 @@ var app = (function () {
 
     			dispose = [
     				action_destroyer(draggable_action = draggable.call(null, div0)),
-    				listen_dev(div0, "dragmove", /*setHandlesFromBody*/ ctx[6], false, false, false),
+    				listen_dev(div0, "dragmove", stop_propagation(prevent_default(/*setHandlesFromBody*/ ctx[6])), false, true, true),
     				action_destroyer(draggable_action_1 = draggable.call(null, div1)),
-    				listen_dev(div1, "dragmove", stop_propagation(/*setHandlePosition*/ ctx[5]("start")), false, false, true),
+    				listen_dev(div1, "dragmove", stop_propagation(prevent_default(/*setHandlePosition*/ ctx[5]("start"))), false, true, true),
     				action_destroyer(draggable_action_2 = draggable.call(null, div2)),
-    				listen_dev(div2, "dragmove", stop_propagation(/*setHandlePosition*/ ctx[5]("end")), false, false, true)
+    				listen_dev(div2, "dragmove", stop_propagation(prevent_default(/*setHandlePosition*/ ctx[5]("end"))), false, true, true)
     			];
     		},
     		p: function update(ctx, [dirty]) {

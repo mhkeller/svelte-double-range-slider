@@ -115,7 +115,7 @@
 			class="body"
 			bind:this={body}
 			use:draggable
-			on:dragmove="{setHandlesFromBody}"
+			on:dragmove|preventDefault|stopPropagation="{setHandlesFromBody}"
 			style="
 				left: {100 * start}%;
 				right: {100 * (1 - end)}%;
@@ -126,7 +126,7 @@
 			bind:this={leftHandle}
 			data-which="start"
 			use:draggable
-			on:dragmove|stopPropagation="{setHandlePosition('start')}"
+			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('start')}"
 			style="
 				left: {100 * start}%
 			"
@@ -135,7 +135,7 @@
 			class="handle"
 			data-which="end"
 			use:draggable
-			on:dragmove|stopPropagation="{setHandlePosition('end')}"
+			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('end')}"
 			style="
 				left: {100 * end}%
 			"
