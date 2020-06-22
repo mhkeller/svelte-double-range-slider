@@ -67,8 +67,8 @@
 
 		return {
 			destroy() {
-				node.removeEventListener('touchmove', handleMousedown);
 				node.removeEventListener('mousedown', handleMousedown);
+				node.removeEventListener('touchstart', handleMousedown);
 			}
 		};
 	}
