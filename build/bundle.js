@@ -399,19 +399,19 @@ var app = (function () {
     			attr_dev(div0, "class", "body svelte-1507pyp");
     			set_style(div0, "left", 100 * /*start*/ ctx[0] + "%");
     			set_style(div0, "right", 100 * (1 - /*end*/ ctx[1]) + "%");
-    			add_location(div0, file, 113, 2, 2629);
+    			add_location(div0, file, 113, 2, 2630);
     			attr_dev(div1, "class", "handle svelte-1507pyp");
     			attr_dev(div1, "data-which", "start");
     			set_style(div1, "left", 100 * /*start*/ ctx[0] + "%\n\t\t\t");
-    			add_location(div1, file, 123, 2, 2842);
+    			add_location(div1, file, 123, 2, 2843);
     			attr_dev(div2, "class", "handle svelte-1507pyp");
     			attr_dev(div2, "data-which", "end");
     			set_style(div2, "left", 100 * /*end*/ ctx[1] + "%\n\t\t\t");
-    			add_location(div2, file, 133, 2, 3060);
+    			add_location(div2, file, 133, 2, 3061);
     			attr_dev(div3, "class", "slider svelte-1507pyp");
-    			add_location(div3, file, 112, 1, 2587);
+    			add_location(div3, file, 112, 1, 2588);
     			attr_dev(div4, "class", "double-range-container svelte-1507pyp");
-    			add_location(div4, file, 111, 0, 2549);
+    			add_location(div4, file, 111, 0, 2550);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -522,8 +522,8 @@ var app = (function () {
 
     	return {
     		destroy() {
-    			node.removeEventListener("touchmove", handleMousedown);
     			node.removeEventListener("mousedown", handleMousedown);
+    			node.removeEventListener("touchstart", handleMousedown);
     		}
     	};
     }
