@@ -19,5 +19,18 @@
   "dependencies": {
     "sirv-cli": "^0.4.4",
     "yootils": "0.0.16"
-  }
+  },
+  "description": "Svelte Double Range Slider ===",
+  "main": "rollup.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhkeller/svelte-double-range-slider.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhkeller/svelte-double-range-slider/issues"
+  },
+  "homepage": "https://github.com/mhkeller/svelte-double-range-slider#readme"
 }
